@@ -20,7 +20,7 @@ jobs:
     with:
       files: |
         xiao-ir-mate/xiao-ir-mate.factory.yaml
-      esphome-version: 2026.1.1
+      esphome-version: 2026.2.4
       release-summary: ${{ github.event_name == 'release' && github.event.release.body || '' }}
       release-url: ${{ github.event_name == 'release' && github.event.release.html_url || '' }}
       release-version: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
