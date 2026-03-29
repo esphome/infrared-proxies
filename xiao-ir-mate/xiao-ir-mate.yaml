@@ -50,6 +50,7 @@ remote_transmitter:
   id: ir_tx
   pin: GPIO3
   carrier_duty_percent: 50%
+  non_blocking: True
 
 remote_receiver:
   - id: ir_rx
