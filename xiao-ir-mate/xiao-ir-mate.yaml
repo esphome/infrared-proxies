@@ -9,9 +9,6 @@ esp32:
   board: seeed_xiao_esp32c3
   framework:
     type: esp-idf
-    sdkconfig_options:
-      CONFIG_BT_BLE_42_FEATURES_SUPPORTED: y
-      CONFIG_BT_BLE_50_FEATURES_SUPPORTED: n
 
 # To be able to get logs from the device via serial and api.
 logger:
