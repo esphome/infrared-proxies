@@ -38,3 +38,40 @@ infrared:
     name: IR Proxy Transmitter
     id: ir_proxy_tx
     remote_transmitter_id: ir_tx
+
+button:
+  - platform: template
+    name: Living Room Lights Scene 1
+    id: living_room_lights_scene1
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          #data: "0000 0063 0000 0007 0356 011d 005f 011d 005f 0060 017b 0060 005f 011d 011d 0060 005f 01af"
+          data: "0000 0069 0007 0000 032a 010e 005a 010e 005a 005a 0168 005a 005a 010e 010e 005a 005a 0168"
+  - platform: template
+    name: Living Room Lights Scene 2
+    id: living_room_lights_scene2
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          #data: "0000 0063 0000 0007 0356 011d 005f 011e 005f 0060 017b 0060 005f 00bf 005f 00bf 005f 0281"
+          data: "0000 0069 0007 0000 032a 010e 005a 010e 005a 005a 0168 005a 005a 00b4 005a 00b4 005a 021c"
+  - platform: template
+    name: Living Room Lights Scene 3
+    id: living_room_lights_scene3
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          #data: "0000 0063 0000 0008 0356 011d 005f 011d 005f 0060 017c 0060 005f 00be 005f 0060 005f 0060 00be 01ae"
+          data: "0000 0069 0008 0000 032a 010e 005a 010e 005a 005a 0168 005a 005a 00b4 005a 005a 005a 005a 00b4 0168"
+  - platform: template
+    name: Living Room Lights Scene 4
+    id: living_room_lights_scene4
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          #data: "0000 0063 0000 0007 0356 011d 005f 011d 005f 0060 017b 0060 005f 0060 011d 011d 005f 01ad"
+          data: "0000 0069 0007 0000 032a 010e 005a 010e 005a 005a 0168 005a 005a 005a 010e 010e 005a 0168"
+  - platform: template
+    name: Living Room Lights Off
+    id: living_room_lights_off
+    on_press:
+      - remote_transmitter.transmit_pronto:
+          #data: "0000 0063 0000 0007 0330 0111 005a 0111 005a 005b 016a 005b 005a 0111 005a 00b6 005a 01f2"
+          data: "0000 0069 0007 0000 032a 010e 005a 010e 005a 005a 0168 005a 005a 010e 005a 00b4 005a 01c2"
