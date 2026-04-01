@@ -19,6 +19,7 @@ jobs:
     uses: esphome/workflows/.github/workflows/build.yml@2025.10.0
     with:
       files: |
+        m5stack/m5stack-atom-lite.factory.yaml
         xiao-ir-mate/xiao-ir-mate.factory.yaml
       esphome-version: 2026.2.4
       release-summary: ${{ github.event_name == 'release' && github.event.release.body || '' }}
