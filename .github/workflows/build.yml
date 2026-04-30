@@ -30,7 +30,7 @@ jobs:
     name: Upload to R2
     needs:
       - build-firmware
-    uses: esphome/workflows/.github/workflows/upload-to-r2.yml@e7eee2a828517c042794a831f75310959fbf2a16  # 2025.10.0
+    uses: esphome/workflows/.github/workflows/upload-to-r2.yml@025a1e6255610c498ed590403b7e510b69e474df  # 2026.4.1
     with:
       directory: xiao-ir-mate
     secrets: inherit
