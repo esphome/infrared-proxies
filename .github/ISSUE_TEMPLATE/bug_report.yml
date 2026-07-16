@@ -10,12 +10,12 @@ body:
         from this repository. This includes flashing the firmware from the ESPHome projects page and the OTA updates that are provided.
 
         **This is NOT for:**
-        - Reporting issues with ESPHome itself. Please use the [ESPHome issue tracker](https://github.com/esphome/issues)
+        - Reporting issues with ESPHome itself. Please use the [ESPHome issue tracker](https://github.com/esphome/esphome/issues)
         - Requesting new device support. We only add new devices we have tested and are happy to recommend.
 
         If you have taken control of the device in the ESPHome Builder, please report the issue in the main [ESPHome issue tracker][issues].
 
-        [issues]: https://github.com/esphome/issues
+        [issues]: https://github.com/esphome/esphome/issues
 
   - type: textarea
     validations:
