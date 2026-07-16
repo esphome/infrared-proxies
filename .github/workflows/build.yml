@@ -106,7 +106,7 @@ jobs:
     uses: esphome/workflows/.github/workflows/build.yml@025a1e6255610c498ed590403b7e510b69e474df  # 2026.4.1
     with:
       files: ${{ needs.discover-files.outputs.files }}
-      esphome-version: 2026.2.4
+      esphome-version: 2026.7.0
       release-summary: ${{ needs.determine-version.outputs.summary }}
       release-url: ${{ needs.determine-version.outputs.url }}
       release-version: ${{ needs.determine-version.outputs.version }}
