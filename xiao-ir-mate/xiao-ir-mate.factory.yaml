@@ -33,4 +33,4 @@ update:
   - platform: http_request
     name: None
     id: update_http_request
-    source: https://firmware.esphome.io/xiao-ir-mate/xiao-ir-mate/manifest.json
+    source: https://firmware.esphome.io/infrared-proxy/xiao-ir-mate/manifest.json
