@@ -12,6 +12,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  discover-files:
+    name: Discover Factory Configs
+    # Skip the entire pipeline if the Release Drafter run that triggered us failed.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      files: ${{ steps.find.outputs.files }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+      - name: Find factory configs
+        id: find
+        run: |
+          set -euo pipefail
+          # By convention every device ships a <device>/<device>.factory.yaml;
+          # anything matching *.factory.yaml outside hidden directories is
+          # built. Prune dot-directories (.git, .github) rather than just
+          # filtering them from the results, so find never descends into them.
+          files=$(find . -path '*/.*' -prune -o -name '*.factory.yaml' -print | sed 's|^\./||' | sort)
+          if [[ -z "${files}" ]]; then
+            echo "::error::No *.factory.yaml files found"
+            exit 1
+          fi
+          echo "Discovered factory configs:"
+          echo "${files}"
+          {
+            echo "files<<FACTORY_FILES_EOF"
+            echo "${files}"
+            echo "FACTORY_FILES_EOF"
+          } >> "$GITHUB_OUTPUT"
+
   determine-version:
     name: Determine Version
     # Skip the entire pipeline if the Release Drafter run that triggered us failed.
@@ -60,11 +93,12 @@ jobs:
 
   build-firmware:
     name: Build Firmware
-    needs: determine-version
+    needs:
+      - discover-files
+      - determine-version
     uses: esphome/workflows/.github/workflows/build.yml@025a1e6255610c498ed590403b7e510b69e474df  # 2026.4.1
     with:
-      files: |
-        xiao-ir-mate/xiao-ir-mate.factory.yaml
+      files: ${{ needs.discover-files.outputs.files }}
       esphome-version: 2026.2.4
       release-summary: ${{ needs.determine-version.outputs.summary }}
       release-url: ${{ needs.determine-version.outputs.url }}
