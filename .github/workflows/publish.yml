@@ -162,30 +162,3 @@ jobs:
       channel: production
       manifest-filename: manifest.json
     secrets: inherit
-
-  # TEMPORARY: firmware used to live under `xiao-ir-mate/` on
-  # firmware.esphome.io, and devices in the field poll that directory for OTA
-  # updates. Keep publishing there so those devices pick up a release whose
-  # baked-in `update.source` points at the new `infrared-proxy/` directory.
-  # Remove both legacy jobs once such a release has shipped to production.
-  upload-to-r2-legacy:
-    name: Upload to R2 (legacy directory)
-    needs:
-      - prepare-artifact
-    uses: esphome/workflows/.github/workflows/upload-to-r2.yml@025a1e6255610c498ed590403b7e510b69e474df  # 2026.4.1
-    with:
-      directory: xiao-ir-mate
-    secrets: inherit
-
-  promote-prod-legacy:
-    name: Promote to Production (legacy directory)
-    if: github.event.release.prerelease == false
-    needs:
-      - upload-to-r2-legacy
-    uses: esphome/workflows/.github/workflows/promote-r2.yml@025a1e6255610c498ed590403b7e510b69e474df  # 2026.4.1
-    with:
-      version: ${{ github.event.release.tag_name }}
-      directory: xiao-ir-mate
-      channel: production
-      manifest-filename: manifest.json
-    secrets: inherit
