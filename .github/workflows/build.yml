@@ -23,6 +23,6 @@ jobs:
     # Discovers *.factory.yaml configs, builds them, and — when triggered by
     # a successful Release Drafter run — uploads the firmware to the current
     # draft release. On pull_request/workflow_dispatch it only builds.
-    uses: esphome/workflows/.github/workflows/build-to-draft-release.yml@9f6577fd37b5cf773ab1b9be929714a0dcd15661  # 2026.7.0
+    uses: esphome/workflows/.github/workflows/build-to-draft-release.yml@0fdd5e311b7e744069166696072a1a9cbc5fbeb6  # 2026.8.1
     with:
       esphome-version: 2026.7.0
