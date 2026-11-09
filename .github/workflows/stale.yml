@@ -17,7 +17,7 @@ jobs:
     # actions/stale, this workflow measures real activity (comments, commits
     # and reviews) instead of trusting updated_at, and it covers pull
     # requests as well as issues.
-    uses: esphome/workflows/.github/workflows/stale.yml@cc3e76de337dc59bc1cba8da58d963cd23b873f1  # 2026.9.0
+    uses: esphome/workflows/.github/workflows/stale.yml@b2c0cffae477d81175c67e6a44651a9bc2b49f6f  # 2026.11.0
     secrets:
       ESPHOME_GITHUB_APP_PRIVATE_KEY: ${{ secrets.ESPHOME_GITHUB_APP_PRIVATE_KEY }}
     with:
